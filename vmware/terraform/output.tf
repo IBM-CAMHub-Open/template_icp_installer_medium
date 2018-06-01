@@ -1,6 +1,6 @@
 #
 output "ibm_cloud_private_admin_url" {
-  value = "<a href='https://${var.master_vm_ipv4_address[0]}:8443' target='_blank'>https://${var.master_vm_ipv4_address[0]}:8443</a>"
+  value = "<a href='https://${element(values(var.master_hostname_ip),0)}:8443' target='_blank'>https://${element(values(var.master_hostname_ip),0)}:8443</a>"
 }
 
 output "ibm_cloud_private_admin_user" {
