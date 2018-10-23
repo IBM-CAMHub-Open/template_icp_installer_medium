@@ -394,7 +394,7 @@ module "deployVM_NFS_Server" {
 }
 
 module "icphosts" {
-  source                = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.1//config_icphosts"
+  source                = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//config_icphosts"
   master_public_ips     = "${join(",", values(var.master_hostname_ip))}"
   management_public_ips = "${join(",", values(var.manage_hostname_ip))}"
   proxy_public_ips      = "${join(",", values(var.proxy_hostname_ip))}"
@@ -497,6 +497,7 @@ module "glusterFS" {
   vm_os_password          = "${var.vm_os_password}"
   boot_vm_ipv4_address    = "${element(values(var.boot_hostname_ip),0)}"
   gluster_volumetype_none = "${var.gluster_volumetype_none}"
+  icp_version             = "${var.icp_version}"
   #######
   bastion_host        = "${var.bastion_host}"
   bastion_user        = "${var.bastion_user}"
