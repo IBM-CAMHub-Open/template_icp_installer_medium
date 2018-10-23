@@ -402,6 +402,7 @@ module "icphosts" {
   va_public_ips         = "${join(",", values(var.va_hostname_ip))}"
   enable_vm_management  = "${var.enable_vm_management}"
   enable_vm_va          = "${var.enable_vm_va}"
+  enable_glusterFS      = "${var.worker_enable_glusterFS}"
   random                = "${random_string.random-dir.result}"
 }
 
@@ -546,6 +547,7 @@ module "icp_config_yaml" {
   icp_admin_user         = "${var.icp_admin_user}"
   icp_admin_password     = "${var.icp_admin_password}"
   enable_bluemix_install = "${var.enable_bluemix_install}"
+  enable_glusterFS        = "${var.worker_enable_glusterFS}"
   bluemix_token          = "${var.bluemix_token}"
   random                 = "${random_string.random-dir.result}"
   #######
