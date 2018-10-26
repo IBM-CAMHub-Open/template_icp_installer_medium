@@ -559,3 +559,15 @@ variable "download_user" {
 variable "download_user_password" {
   type = "string"
 }
+
+variable "cluster_lb_address" {
+  type = "string"
+  default = "none"
+  description = "IP Address of the Cluster Load Balancer"
+}
+
+variable "proxy_lb_address" {
+  type = "string"
+  default = "none"
+  description = "IP Address of the Proxy Load Balancer"
+}

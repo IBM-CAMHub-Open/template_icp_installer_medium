@@ -373,6 +373,30 @@
     "group_name": "icpmultinode"
   },
   {
+    "name": "cluster_lb_address",
+    "default": "none",
+    "description": "IP Address of the Cluster Load Balancer",
+    "type": "string",
+    "required": true,
+    "secured": false,
+    "label": "IP Address of the Cluster Load Balancer",
+    "hidden": false,
+    "immutable": false,
+    "group_name": "icpmultinode"
+  },
+  {
+    "name": "proxy_lb_address",
+    "default": "none",
+    "description": "IP Address of the Proxy Load Balancer",
+    "type": "string",
+    "required": true,
+    "secured": false,
+    "label": "IP Address of the Proxy Load Balancer",
+    "hidden": false,
+    "immutable": false,
+    "group_name": "icpmultinode"
+  },  
+  {
     "name": "icp_binary_url",
     "description": "Location of the IBM Cloud Private Binaries used by IBM Cloud Private",
     "type": "string",
@@ -1160,18 +1184,6 @@
     "required": false,
     "secured": false,
     "label": "NFS Server Node Server Folder",
-    "hidden": false,
-    "immutable": false,
-    "group_name": "nfs_servervirtualmachine"
-  },
-  {
-    "name": "nfs_server_mount_point",
-    "description": "IBM Cloud Private Master Node NFS Mount Name",
-    "default": "/mnt/nfs",
-    "type": "string",
-    "required": false,
-    "secured": false,
-    "label": "NFS Server Node Mount Point",
     "hidden": false,
     "immutable": false,
     "group_name": "nfs_servervirtualmachine"
