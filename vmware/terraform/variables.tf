@@ -530,19 +530,21 @@ variable "bluemix_token" {
 
 variable "enable_kibana" {
   type = "string"
-
   default = "true"
 }
 
 variable "enable_metering" {
   type = "string"
+  default = "true"
+}
 
+variable "enable_monitoring" {
+  type    = "string"
   default = "true"
 }
 
 variable "icp_admin_user" {
   type = "string"
-
   default = "admin"
 }
 

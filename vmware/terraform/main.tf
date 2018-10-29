@@ -541,6 +541,7 @@ module "icp_config_yaml" {
   vm_ipv4_address_list   = "${values(var.boot_hostname_ip)}"
   enable_kibana          = "${lower(var.enable_kibana)}"
   enable_metering        = "${lower(var.enable_metering)}"
+  enable_monitoring      = "${lower(var.enable_monitoring)}"
   cluster_lb_address     = "${var.cluster_lb_address}"
   proxy_lb_address       = "${var.proxy_lb_address}"
   icp_version            = "${var.icp_version}"
