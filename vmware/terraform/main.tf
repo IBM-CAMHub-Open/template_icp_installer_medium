@@ -542,6 +542,7 @@ module "icp_config_yaml" {
   enable_kibana          = "${lower(var.enable_kibana)}"
   enable_metering        = "${lower(var.enable_metering)}"
   enable_monitoring      = "${lower(var.enable_monitoring)}"
+  enable_va              = "${lower(var.enable_vm_va)}"
   cluster_lb_address     = "${var.cluster_lb_address}"
   proxy_lb_address       = "${var.proxy_lb_address}"
   icp_version            = "${var.icp_version}"
