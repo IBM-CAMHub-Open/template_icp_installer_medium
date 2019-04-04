@@ -13,3 +13,7 @@ output "ibm_cloud_private_admin_password" {
 output "ibm_cloud_private_master_ip" {
   value = "${element(values(var.master_hostname_ip),0)}"
 }
+
+output "ibm_cloud_private_boot_ip" {
+  value = "${element(values(var.boot_hostname_ip),0)}"
+}
