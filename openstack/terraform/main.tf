@@ -367,7 +367,7 @@ module "icp_prereqs" {
   private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${base64decode(var.icp_private_ssh_key)}"}"
   vm_os_user           = "${var.vm_os_user}"
   vm_os_password       = "${var.vm_os_password}"
-  vm_ipv4_address_list = "${compact(split(",", replace(join(",",concat(values(var.boot_hostname_ip), values(var.master_hostname_ip), values(var.proxy_hostname_ip), values(var.manage_hostname_ip), values(var.worker_hostname_ip), values(var.manage_hostname_ip), values(var.va_hostname_ip))),"/0.0.0.0/", "" )))}"
+  vm_ipv4_address_list = "${compact(split(",", replace(join(",",concat(values(var.boot_hostname_ip), values(var.master_hostname_ip), values(var.proxy_hostname_ip), values(var.manage_hostname_ip), values(var.worker_hostname_ip), values(var.manage_hostname_ip), values(var.va_hostname_ip))),"0.0.0.0", "" )))}"
 
   random    = "${random_string.random-dir.result}"
   #######
@@ -386,7 +386,7 @@ module "push_hostfile" {
   vm_os_user           = "${var.vm_os_user}"
   vm_os_password       = "${var.vm_os_password}"
   # vm_ipv4_address_list = "${compact(concat(values(var.boot_hostname_ip), values(var.master_hostname_ip), values(var.proxy_hostname_ip), values(var.manage_hostname_ip), values(var.worker_hostname_ip), values(var.nfs_server_hostname_ip), values(var.va_hostname_ip)))}"
-  vm_ipv4_address_list = "${compact(split(",", replace(join(",",concat(values(var.boot_hostname_ip), values(var.master_hostname_ip), values(var.proxy_hostname_ip), values(var.manage_hostname_ip), values(var.worker_hostname_ip), values(var.manage_hostname_ip), values(var.va_hostname_ip))),"/0.0.0.0/", "" )))}"
+  vm_ipv4_address_list = "${compact(split(",", replace(join(",",concat(values(var.boot_hostname_ip), values(var.master_hostname_ip), values(var.proxy_hostname_ip), values(var.manage_hostname_ip), values(var.worker_hostname_ip), values(var.manage_hostname_ip), values(var.va_hostname_ip))),"0.0.0.0", "" )))}"
   random               = "${random_string.random-dir.result}"
   #######
   bastion_host        = "${var.bastion_host}"
