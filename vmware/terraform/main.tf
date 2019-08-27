@@ -87,7 +87,7 @@ module "deployVM_boot" {
 }
 
 module "add_ilmt_file_boot" {
-  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.1.2"
+  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.2.1"
 
   private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${base64decode(var.icp_private_ssh_key)}"}"
   vm_os_password       = "${var.vm_os_password}"
@@ -157,7 +157,7 @@ module "deployVM_master" {
 }
 
 module "add_ilmt_file_master" {
-  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.1.2"
+  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.2.1"
 
   private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${base64decode(var.icp_private_ssh_key)}"}"
   vm_os_password       = "${var.vm_os_password}"
@@ -277,7 +277,7 @@ module "deployVM_proxy" {
 }
 
 module "add_ilmt_file_proxy" {
-  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.1.2"
+  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.2.1"
 
   private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${base64decode(var.icp_private_ssh_key)}"}"
   vm_os_password       = "${var.vm_os_password}"
@@ -346,7 +346,7 @@ module "deployVM_worker" {
 }
 
 module "add_ilmt_file_worker" {
-  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.1.2"
+  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.2.1"
 
   private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${base64decode(var.icp_private_ssh_key)}"}"
   vm_os_password       = "${var.vm_os_password}"
@@ -485,7 +485,7 @@ module "icp_prereqs" {
   private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${base64decode(var.icp_private_ssh_key)}"}"
   vm_os_user           = "${var.vm_os_user}"
   vm_os_password       = "${var.vm_os_password}"
-  vm_ipv4_address_list = "${compact(split(",", replace(join(",",concat(values(var.boot_hostname_ip), values(var.master_hostname_ip), values(var.proxy_hostname_ip), values(var.manage_hostname_ip), values(var.worker_hostname_ip), values(var.manage_hostname_ip), values(var.va_hostname_ip))),"/0.0.0.0/", "" )))}"
+  vm_ipv4_address_list = "${compact(split(",", replace(join(",",concat(values(var.boot_hostname_ip), values(var.master_hostname_ip), values(var.proxy_hostname_ip), values(var.manage_hostname_ip), values(var.worker_hostname_ip), values(var.manage_hostname_ip), values(var.va_hostname_ip))),"0.0.0.0", "" )))}"
 
   random    = "${random_string.random-dir.result}"
   #######
@@ -505,7 +505,7 @@ module "push_hostfile" {
   vm_os_user           = "${var.vm_os_user}"
   vm_os_password       = "${var.vm_os_password}"
   # vm_ipv4_address_list = "${compact(concat(values(var.boot_hostname_ip), values(var.master_hostname_ip), values(var.proxy_hostname_ip), values(var.manage_hostname_ip), values(var.worker_hostname_ip), values(var.nfs_server_hostname_ip), values(var.va_hostname_ip)))}"
-  vm_ipv4_address_list = "${compact(split(",", replace(join(",",concat(values(var.boot_hostname_ip), values(var.master_hostname_ip), values(var.proxy_hostname_ip), values(var.manage_hostname_ip), values(var.worker_hostname_ip), values(var.manage_hostname_ip), values(var.va_hostname_ip))),"/0.0.0.0/", "" )))}"
+  vm_ipv4_address_list = "${compact(split(",", replace(join(",",concat(values(var.boot_hostname_ip), values(var.master_hostname_ip), values(var.proxy_hostname_ip), values(var.manage_hostname_ip), values(var.worker_hostname_ip), values(var.manage_hostname_ip), values(var.va_hostname_ip))),"0.0.0.0", "" )))}"
   random               = "${random_string.random-dir.result}"
   #######
   bastion_host        = "${var.bastion_host}"
@@ -518,7 +518,7 @@ module "push_hostfile" {
 }
 
 module "add_ilmt_file_VA_Server" {
-  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.1.2"
+  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.2.1"
 
   enable_vm               = "${var.enable_vm_va}"
 
@@ -538,7 +538,7 @@ module "add_ilmt_file_VA_Server" {
 }
 
 module "add_ilmt_file_NFS_Server" {
-  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.1.2"
+  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.2.1"
 
   enable_vm           = "${var.enable_nfs}"
   
@@ -558,7 +558,7 @@ module "add_ilmt_file_NFS_Server" {
 }
 
 module "add_ilmt_file_manage" {
-  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.1.2"
+  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.2.1"
 
   enable_vm               = "${var.enable_vm_management}"
 
@@ -695,7 +695,7 @@ module "icp_config_yaml" {
   bastion_port        = "${var.bastion_port}"
   bastion_host_key    = "${var.bastion_host_key}"
   bastion_password    = "${var.bastion_password}"          
-  dependsOn              = "${module.icp_download_load.dependsOn}+${module.icp_prereqs.dependsOn}+${module.push_hostfile.dependsOn}+${module.glusterFS.dependsOn}"
+  dependsOn           = "${module.icp_download_load.dependsOn}+${module.icp_prereqs.dependsOn}+${module.push_hostfile.dependsOn}+${module.glusterFS.dependsOn}"
 }
 
 # # resource "null_resource" "Cleanup RANDOM Temp"{
@@ -704,3 +704,41 @@ module "icp_config_yaml" {
 # # 	  command = "rm -rf /tmp/${random_string.random-dir.result}"
 # #   }
 # # }
+
+module "icp_config_output" {
+  dependsOn             = "[${module.icp_config_yaml.dependsOn}]"
+  source                = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//config_output"
+  vm_os_private_key     = "${length(var.icp_private_ssh_key) == 0 ? "${base64encode(tls_private_key.generate.private_key_pem)}" : "${var.icp_private_ssh_key}"}"
+  vm_os_password        = "${var.vm_os_password}"
+  vm_os_user            = "${var.vm_os_user}"
+  master_node_ip        = "${element(values(var.master_hostname_ip),0)}"
+  cluster_name			= "${var.icp_cluster_name}"
+  api_server			= "${element(values(var.master_hostname_ip),0)}"
+  api_port				= "8001"
+  reg_server			= "${var.icp_cluster_name}.${var.vm_domain}"
+  reg_port				= "8500"
+  icp_admin_user        = "${var.icp_admin_user}"
+  #######
+  bastion_host        = "${var.bastion_host}"
+  bastion_user        = "${var.bastion_user}"
+  bastion_private_key = "${var.bastion_private_key}"
+  bastion_port        = "${var.bastion_port}"
+  bastion_host_key    = "${var.bastion_host_key}"
+  bastion_password    = "${var.bastion_password}"
+  #######      
+}
+
+resource "camc_scriptpackage" "get_home_dir" {
+  depends_on = ["module.icp_config_yaml"]
+  program = ["echo $HOME"]
+  on_create = true
+  remote_host = "${element(values(var.boot_hostname_ip),0)}"
+  remote_user = "${var.vm_os_user}"
+  remote_password = "${var.vm_os_password}"
+  remote_key = "${length(var.icp_private_ssh_key) == 0 ? "${base64encode(tls_private_key.generate.private_key_pem)}" : "${var.icp_private_ssh_key}"}"
+  bastion_host        = "${var.bastion_host}"
+  bastion_user        = "${var.bastion_user}"
+  bastion_private_key = "${var.bastion_private_key}"
+  bastion_port        = "${var.bastion_port}"
+  bastion_password    = "${var.bastion_password}"
+}
